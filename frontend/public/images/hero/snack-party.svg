@@ -1,0 +1,18 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="420" rx="40" fill="#FFF3DF"/>
+  <circle cx="121" cy="92" r="54" fill="#FFE2B6"/>
+  <circle cx="533" cy="99" r="72" fill="#FFD39A"/>
+  <rect x="116" y="162" width="175" height="188" rx="28" fill="#FFB938"/>
+  <rect x="138" y="134" width="132" height="54" rx="18" fill="#FFCF70"/>
+  <circle cx="410" cy="250" r="108" fill="#FFFFFF"/>
+  <circle cx="398" cy="236" r="74" fill="#F9D8A4"/>
+  <circle cx="398" cy="236" r="60" fill="#F2C176"/>
+  <circle cx="382" cy="217" r="10" fill="#B86D31"/>
+  <circle cx="433" cy="225" r="12" fill="#B86D31"/>
+  <circle cx="412" cy="261" r="11" fill="#B86D31"/>
+  <rect x="468" y="166" width="84" height="154" rx="20" fill="#FF8456"/>
+  <rect x="485" y="135" width="50" height="36" rx="12" fill="#FFD6C2"/>
+  <rect x="193" y="208" width="40" height="103" rx="18" fill="#FFF0D8"/>
+  <rect x="243" y="228" width="32" height="82" rx="16" fill="#FFF0D8"/>
+  <path d="M209 188C214 168 231 153 252 152" stroke="#FFF0D8" stroke-width="10" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-brand-soft font-sans text-brand-ink antialiased;
+  background-color: #f6f8ee;
+  background-image:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.96), rgba(247, 249, 239, 0.9) 32%, rgba(231, 242, 219, 0.72) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(244, 248, 233, 0.88));
+  letter-spacing: -0.01em;
+  font-feature-settings: "ss01" 1, "cv02" 1, "cv03" 1;
+}
+
+::selection {
+  @apply bg-brand-accent/40 text-brand-dark;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(122, 182, 64, 0.45) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(122, 182, 64, 0.4);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-brand-dark;
+    letter-spacing: -0.05em;
+  }
+
+  a {
+    @apply transition-all duration-300;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-7xl px-3.5 sm:px-6 lg:px-8;
+  }
+
+  .glass-panel {
+    @apply border border-white/70 bg-white/75 backdrop-blur-xl;
+  }
+
+  .surface-card {
+    @apply rounded-[1.35rem] border border-white/80 bg-white/95 shadow-card sm:rounded-[1.75rem];
+    box-shadow: 0 22px 50px rgba(15, 31, 23, 0.08);
+  }
+
+  .pill-chip {
+    @apply inline-flex items-center gap-1.5 rounded-pill border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-600 shadow-soft sm:gap-2 sm:px-3 sm:text-sm;
+  }
+
+  .section-gap {
+    @apply py-6 sm:py-10 lg:py-12;
+  }
+
+  .field-control {
+    @apply w-full rounded-[1.15rem] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-brand/30 focus:shadow-soft sm:rounded-[1.35rem] sm:py-3.5;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-[#1195e8] px-4 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#0d84cf] disabled:cursor-not-allowed disabled:opacity-70 sm:px-5 sm:py-3;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-brand-dark shadow-soft transition hover:-translate-y-0.5 hover:border-brand/25 disabled:cursor-not-allowed disabled:opacity-70 sm:px-5 sm:py-3;
+  }
+
+  .button-soft {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-brand-dark px-4 py-2.5 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70 sm:px-5 sm:py-3;
+  }
+
+  .retail-panel {
+    @apply rounded-[1.5rem] border border-white/80 bg-white/95 shadow-card sm:rounded-[2rem];
+    box-shadow: 0 28px 70px rgba(15, 31, 23, 0.09);
+  }
+
+  .topbar-link {
+    @apply inline-flex items-center gap-2 text-white/75 transition hover:text-white;
+  }
+  .richtext-content {
+    @apply text-sm leading-7 text-slate-600 sm:text-base sm:leading-8;
+  }
+
+  .richtext-content h2,
+  .richtext-content h3 {
+    @apply mt-6 text-brand-dark;
+    letter-spacing: -0.04em;
+  }
+
+  .richtext-content h2 {
+    @apply text-2xl;
+  }
+
+  .richtext-content h3 {
+    @apply text-xl;
+  }
+
+  .richtext-content p + p,
+  .richtext-content p + ul,
+  .richtext-content p + ol,
+  .richtext-content ul + p,
+  .richtext-content ol + p,
+  .richtext-content blockquote + p {
+    @apply mt-4;
+  }
+
+  .richtext-content ul,
+  .richtext-content ol {
+    @apply ml-5 mt-4 space-y-2;
+  }
+
+  .richtext-content ul {
+    list-style: disc;
+  }
+
+  .richtext-content ol {
+    list-style: decimal;
+  }
+
+  .richtext-content blockquote {
+    @apply mt-4 rounded-[1.25rem] border-l-4 border-[#1195e8] bg-slate-50 px-4 py-3 text-slate-700;
+  }
+
+  .richtext-content a {
+    @apply font-semibold text-[#1195e8] underline decoration-[#1195e8]/30 underline-offset-4 hover:text-[#0d84cf];
+  }
+}
+
