@@ -22,6 +22,7 @@ const sendAuthResponse = (res, statusCode, message, user) => {
     success: true,
     message,
     data: {
+      token,
       user: serializeUser(user),
     },
   });
