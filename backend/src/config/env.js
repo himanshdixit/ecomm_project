@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const normalizeOrigins = (value) =>
-  String(value || "https://ecommproject001.vercel.app")
+  String(value || "http://localhost:3000")
     .split(",")
     .map((entry) => entry.trim())
     .filter(Boolean);

@@ -15,6 +15,7 @@ const router = express.Router();
 
 router.get("/", getProducts);
 router.get("/admin/all", protect, authorize("admin"), getAdminProducts);
+router.get("/slug/:slug", getProductBySlug);
 router.get("/:slug", getProductBySlug);
 router.post("/", protect, authorize("admin"), uploadProductImages, createProduct);
 router.put("/:id", protect, authorize("admin"), uploadProductImages, updateProduct);

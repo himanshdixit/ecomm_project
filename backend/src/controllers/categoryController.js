@@ -95,6 +95,24 @@ export const getCategories = asyncHandler(async (req, res) => {
   });
 });
 
+export const getCategoryBySlug = asyncHandler(async (req, res) => {
+  const { categories } = await getSerializedCategories();
+  const category = categories.find((entry) => entry.slug === req.params.slug);
+
+  if (!category) {
+    res.status(404);
+    throw new Error("Category not found.");
+  }
+
+  res.status(200).json({
+    success: true,
+    message: "Category fetched successfully.",
+    data: {
+      category,
+    },
+  });
+});
+
 export const createCategory = asyncHandler(async (req, res) => {
   const payload = await toCategoryPayload(req.body);
 

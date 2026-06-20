@@ -39,7 +39,7 @@ app.use("/uploads", express.static(uploadsDirectory, { maxAge: config.isProducti
 app.get("/", (req, res) => {
   res.json(
     apiResponse({
-      message: "Codex Commerce API is running",
+      message: "PrimeBasket API is running",
       data: {
         env: config.nodeEnv,
         version: "v1",
