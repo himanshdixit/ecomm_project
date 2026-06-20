@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import CategoryCatalogClient from "@/components/product/CategoryCatalogClient";
 import { buildMetadata, indexRobots, truncateText } from "@/lib/seo";
-import { getCategories, getProducts, toQueryValue } from "@/lib/storefront";
+import { getCategories, getCategoryDetail, getProducts, toQueryValue } from "@/lib/storefront";
 
 const resolveFilters = (params = {}) => ({
   search: toQueryValue(params.search),
@@ -25,8 +25,16 @@ export async function generateMetadata({ params, searchParams }) {
   const { slug } = await params;
   const resolvedSearchParams = await searchParams;
   const filters = resolveFilters(resolvedSearchParams);
-  const categories = await getCategories();
-  const category = categories.find((entry) => entry.slug === slug);
+  const { category, status } = await getCategoryDetail(slug);
+
+  if (!category && status === 404) {
+    return buildMetadata({
+      title: "Category",
+      description: "Browse grocery products by category.",
+      path: `/categories/${slug}`,
+      robots: { index: false, follow: false },
+    });
+  }
 
   if (!category) {
     return buildMetadata({
@@ -51,13 +59,19 @@ export default async function CategoryPage({ params, searchParams }) {
   const { slug } = await params;
   const resolvedSearchParams = await searchParams;
   const filters = resolveFilters(resolvedSearchParams);
+  const [categoryResult, categories] = await Promise.all([getCategoryDetail(slug), getCategories()]);
 
-  const categories = await getCategories();
-  const category = categories.find((entry) => entry.slug === slug);
-
-  if (!category) {
+  if (categoryResult.status === 404) {
     notFound();
   }
+
+  if (!categoryResult.category) {
+    throw new Error("Unable to load this category right now.");
+  }
+
+  const category = categoryResult.category;
+  const resolvedCategories = categories.length ? categories : [category];
+  const resolvedCategory = resolvedCategories.find((entry) => entry.slug === slug) || category;
 
   const productResponse = await getProducts({
     ...filters,
@@ -68,8 +82,8 @@ export default async function CategoryPage({ params, searchParams }) {
   return (
     <main className="mx-auto w-full max-w-7xl space-y-3 px-2 py-3 sm:space-y-5 sm:px-4 sm:py-5 lg:space-y-6 lg:px-8 lg:py-8">
       <CategoryCatalogClient
-        categories={categories}
-        initialCategory={category}
+        categories={resolvedCategories}
+        initialCategory={resolvedCategory}
         initialProductResponse={productResponse}
         initialFilters={filters}
       />

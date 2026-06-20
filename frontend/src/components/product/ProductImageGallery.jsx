@@ -58,7 +58,7 @@ export default function ProductImageGallery({ productName, images = [], tint = "
                 onClick={() => setActiveIndex(index)}
                 className={cn(
                   "relative overflow-hidden rounded-[1.1rem] border bg-white p-1.5 transition",
-                  active ? "border-[#1195e8] shadow-[0_14px_28px_rgba(17,149,232,0.18)]" : "border-slate-200 hover:border-slate-300"
+                  active ? "border-brand shadow-[0_14px_28px_rgba(45,102,215,0.18)]" : "border-slate-200 hover:border-slate-300"
                 )}
               >
                 <div className="relative aspect-square overflow-hidden rounded-[0.9rem] bg-slate-50">

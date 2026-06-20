@@ -52,6 +52,26 @@ const buildProductParams = (slug, filters = {}) => ({
   limit: "12",
 });
 
+const buildCategoryUrl = (slug, filters = {}) => {
+  const searchParams = new URLSearchParams();
+
+  Object.entries({
+    search: filters.search || "",
+    sort: filters.sort && filters.sort !== "latest" ? filters.sort : "",
+    minPrice: filters.minPrice || "",
+    maxPrice: filters.maxPrice || "",
+    inStock: filters.inStock || "",
+    page: filters.page && filters.page !== "1" ? filters.page : "",
+  }).forEach(([key, value]) => {
+    if (value) {
+      searchParams.set(key, value);
+    }
+  });
+
+  const query = searchParams.toString();
+  return query ? `/categories/${slug}?${query}` : `/categories/${slug}`;
+};
+
 export default function CategoryCatalogClient({ categories = [], initialCategory, initialProductResponse, initialFilters }) {
   const initialFilterState = useMemo(() => normalizeFilters(initialFilters), [initialFilters]);
   const [activeSlug, setActiveSlug] = useState(initialCategory.slug);
@@ -150,6 +170,15 @@ export default function CategoryCatalogClient({ categories = [], initialCategory
         }
 
         setProductResponse(nextResponse || EMPTY_PRODUCT_RESPONSE);
+
+        if (typeof window !== "undefined") {
+          const nextUrl = buildCategoryUrl(resolvedSlug, resolvedFilters);
+          const currentUrl = `${window.location.pathname}${window.location.search || ""}`;
+
+          if (nextUrl !== currentUrl) {
+            window.history.replaceState(window.history.state, "", nextUrl);
+          }
+        }
       } catch (fetchError) {
         if (requestId !== requestIdRef.current) {
           return;

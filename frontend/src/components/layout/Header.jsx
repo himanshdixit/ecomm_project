@@ -1,5 +1,6 @@
 "use client";
 
+import BrandLogo from "@/components/branding/BrandLogo";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -125,8 +126,8 @@ export default function Header({ initialCategories }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/70 bg-white/95 shadow-[0_8px_24px_rgba(16,34,23,0.05)] backdrop-blur-2xl">
-      <div className="bg-[#162033] text-white">
+    <header className="sticky top-0 z-50 border-b border-white/70 bg-white/95 shadow-[0_8px_26px_rgba(22,60,146,0.08)] backdrop-blur-2xl">
+      <div className="bg-[linear-gradient(90deg,#15398d_0%,#2d66d7_58%,#42a0ee_100%)] text-white">
         <div className="page-shell flex items-center justify-between gap-3 py-1.5 text-[10px] font-medium sm:text-xs">
           <div className="flex items-center gap-1.5 text-white/90">
             <Sparkles className="h-3.5 w-3.5 text-brand-accent" />
@@ -159,15 +160,12 @@ export default function Header({ initialCategories }) {
             <div className="flex items-center justify-between gap-3 lg:justify-start">
               <motion.div whileHover={hoverLift} whileTap={tapScale}>
                 <Link href="/" className="flex items-center gap-2.5 sm:gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[1rem] bg-[#1195e8] text-white shadow-[0_10px_24px_rgba(17,149,232,0.24)] sm:h-10 sm:w-10">
-                    <Sparkles className="h-[18px] w-[18px]" />
-                  </div>
                   <div className="min-w-0">
-                    <div className="font-display text-[1.16rem] leading-none text-[#1195e8] sm:text-[1.48rem]">FreshCart</div>
-                    <div className="mt-0.5 hidden text-[9px] font-medium uppercase tracking-[0.18em] text-slate-400 sm:block">Daily essentials</div>
+                    <BrandLogo priority className="h-11 w-[164px] rounded-[1rem] sm:h-12 sm:w-[188px]" imageClassName="object-contain object-center" />
+                    <div className="mt-0.5 hidden text-[9px] font-medium uppercase tracking-[0.18em] text-slate-400 sm:block">Express grocery, refined</div>
                     <div className="mt-1 inline-flex max-w-full items-center gap-1 text-[10px] font-medium text-slate-400 lg:hidden">
-                      <MapPin className="h-3 w-3 shrink-0 text-[#1195e8]" />
-                      <span className="truncate">Quick grocery delivery</span>
+                      <MapPin className="h-3 w-3 shrink-0 text-brand" />
+                      <span className="truncate">Fast delivery across daily essentials</span>
                     </div>
                   </div>
                 </Link>
@@ -186,7 +184,7 @@ export default function Header({ initialCategories }) {
                 <motion.div whileHover={hoverLift} whileTap={tapScale} className="relative">
                   <Link
                     href="/cart"
-                    className="inline-flex h-[2.15rem] w-[2.15rem] items-center justify-center rounded-[0.9rem] bg-[#1195e8] text-white shadow-[0_10px_22px_rgba(17,149,232,0.22)] sm:h-9 sm:w-9"
+                    className="inline-flex h-[2.15rem] w-[2.15rem] items-center justify-center rounded-[0.9rem] bg-brand text-white shadow-[0_10px_22px_rgba(45,102,215,0.24)] sm:h-9 sm:w-9"
                     aria-label="Cart"
                   >
                     <ShoppingCart className="h-4 w-4" />
@@ -202,7 +200,7 @@ export default function Header({ initialCategories }) {
 
             <button type="button" className="hidden items-center justify-between rounded-[1.1rem] border border-slate-200 bg-white px-3.5 py-2.5 text-left shadow-soft lg:flex">
               <div className="flex items-center gap-2.5">
-                <MapPin className="h-4 w-4 text-[#1195e8]" />
+                <MapPin className="h-4 w-4 text-brand" />
                 <div>
                   <div className="text-[10px] font-medium text-slate-400">Deliver to</div>
                   <div className="text-[13px] font-semibold text-brand-dark">Select Location</div>
@@ -226,20 +224,20 @@ export default function Header({ initialCategories }) {
                 <motion.div
                   animate={{ opacity: [0.45, 0.85, 0.45] }}
                   transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-                  className="h-10 w-44 rounded-pill bg-brand-soft/80"
+                  className="h-10 w-44 rounded-pill bg-brand-soft/90"
                 />
               ) : isAuthenticated ? (
                 <>
                   <motion.div whileHover={hoverLift} whileTap={tapScale}>
                     <Link href="/account" className="pill-chip bg-slate-50 text-brand-dark hover:bg-white">
-                      <User2 className="h-4 w-4 text-[#1195e8]" />
+                      <User2 className="h-4 w-4 text-brand" />
                       {user?.name?.split(" ")[0] || "Account"}
                     </Link>
                   </motion.div>
                   {isAdmin ? (
                     <motion.div whileHover={hoverLift} whileTap={tapScale}>
                       <Link href="/admin" className="pill-chip bg-brand-soft text-brand-dark hover:bg-white">
-                        <ShieldCheck className="h-4 w-4 text-[#1195e8]" />
+                        <ShieldCheck className="h-4 w-4 text-brand" />
                         Admin
                       </Link>
                     </motion.div>
@@ -301,8 +299,8 @@ export default function Header({ initialCategories }) {
               <Link
                 href="/products"
                 className={cn(
-                  "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-pill border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-semibold text-brand-dark shadow-soft transition hover:border-sky-200 hover:bg-white sm:px-3.5 sm:py-2 sm:text-xs",
-                  pathname === "/products" && "border-sky-200 bg-white text-sky-700"
+                  "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-pill border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-semibold text-brand-dark shadow-soft transition hover:border-brand/20 hover:bg-white sm:px-3.5 sm:py-2 sm:text-xs",
+                  pathname === "/products" && "border-brand/20 bg-white text-brand"
                 )}
               >
                 <LayoutGrid className="h-3.5 w-3.5" />

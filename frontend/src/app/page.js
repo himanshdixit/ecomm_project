@@ -61,10 +61,10 @@ export default async function HomePage() {
         <section className="page-shell space-y-5">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <div className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-rose-500">Deals of the day</div>
+              <div className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-brand">Deals of the day</div>
               <h2 className="text-[2rem] leading-tight text-brand-dark sm:text-[2.35rem]">High-visibility offers without the clutter.</h2>
             </div>
-            <Link href="/products?featured=true" className="hidden text-sm font-semibold text-sky-700 transition hover:translate-x-1 sm:inline-flex">
+            <Link href="/products?featured=true" className="hidden text-sm font-semibold text-brand-dark transition hover:translate-x-1 sm:inline-flex">
               View all
             </Link>
           </div>
@@ -82,14 +82,14 @@ export default async function HomePage() {
 
           {rootCategories.length ? (
             <div className="flex flex-wrap gap-3 overflow-x-auto pb-1">
-              <Link href="/products" className="rounded-pill bg-[#1195e8] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(17,149,232,0.24)]">
+              <Link href="/products" className="rounded-pill bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(45,102,215,0.24)]">
                 All
               </Link>
               {rootCategories.slice(0, 5).map((category) => (
                 <Link
                   key={category.slug}
                   href={`/categories/${category.slug}`}
-                  className="rounded-pill border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-brand-dark shadow-soft transition hover:border-sky-200 hover:text-sky-700"
+                  className="rounded-pill border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-brand-dark shadow-soft transition hover:border-brand/20 hover:text-brand"
                 >
                   {category.shortName || category.name}
                 </Link>
@@ -106,7 +106,7 @@ export default async function HomePage() {
 
         <section className="page-shell">
           <div className="grid gap-5 xl:grid-cols-[1.15fr,0.85fr]">
-            <div className="relative overflow-hidden rounded-[2rem] bg-[#162033] p-6 text-white shadow-[0_30px_70px_rgba(22,32,51,0.28)] sm:p-8">
+            <div className="relative overflow-hidden rounded-[2rem] bg-[linear-gradient(135deg,#163c92_0%,#244fae_44%,#2d66d7_100%)] p-6 text-white shadow-[0_30px_70px_rgba(22,60,146,0.26)] sm:p-8">
               <div className="absolute right-0 top-0 h-44 w-44 rounded-full bg-brand-accent/25 blur-3xl" />
               <div className="relative z-10 max-w-xl space-y-4">
                 <div className="text-xs font-semibold uppercase tracking-[0.28em] text-white/55">Weekend essentials</div>
@@ -139,8 +139,8 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              <div className="surface-card bg-[linear-gradient(135deg,rgba(223,244,234,0.92),rgba(255,255,255,0.96))] p-6">
-                <div className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-700/80">Store promise</div>
+              <div className="surface-card bg-[linear-gradient(135deg,rgba(238,244,255,0.96),rgba(255,247,235,0.94))] p-6">
+                <div className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-dark/80">Store promise</div>
                 <div className="mt-3 grid gap-4 sm:grid-cols-3">
                   <div>
                     <div className="text-3xl font-bold text-brand-dark">10m</div>

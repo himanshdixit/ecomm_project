@@ -197,7 +197,7 @@ export default function AccountProfileForm({ user, isSaving, onSubmit, profileSe
               <div key={field.id} className="rounded-[1.4rem] border border-slate-200 bg-slate-50/80 p-4 sm:p-5">
                 <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#1195e8] shadow-soft">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-brand shadow-soft">
                       <MapPin className="h-4 w-4" />
                     </div>
                     <div>
@@ -206,7 +206,7 @@ export default function AccountProfileForm({ user, isSaving, onSubmit, profileSe
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <button type="button" onClick={() => setDefaultAddress(index)} className={cn("button-secondary px-3.5 py-2 text-xs", isDefault ? "border-emerald-200 bg-emerald-50 text-emerald-700" : "")}>
+                    <button type="button" onClick={() => setDefaultAddress(index)} className={cn("button-secondary px-3.5 py-2 text-xs", isDefault ? "border-brand/20 bg-brand-soft text-brand-dark" : "")}>
                       {isDefault ? "Default address" : "Make default"}
                     </button>
                     <button type="button" onClick={() => handleRemoveAddress(index)} className="button-secondary px-3.5 py-2 text-xs text-rose-600">

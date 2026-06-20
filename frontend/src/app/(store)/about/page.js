@@ -26,7 +26,7 @@ const values = [
 export const metadata = buildMetadata({
   title: "About",
   description:
-    "Learn how FreshCart Studio approaches premium grocery UX with calmer merchandising, cleaner category navigation, and faster online shopping flows.",
+    "Learn how PrimeBasket approaches premium grocery UX with calmer merchandising, cleaner category navigation, and faster online shopping flows.",
   path: "/about",
   keywords: ["about grocery brand", "premium grocery UX", "online grocery experience"],
 });
@@ -39,14 +39,14 @@ export default function AboutPage() {
           <div className="pill-chip w-fit">About the brand</div>
           <h1 className="text-4xl sm:text-5xl">A premium grocery experience shaped for speed, clarity, and trust.</h1>
           <p className="text-sm leading-7 text-slate-600 sm:text-base">
-            FreshCart Studio rethinks fast-commerce browsing with calmer spacing, better visual hierarchy, and grocery-first storytelling that still feels quick and conversion ready.
+            PrimeBasket rethinks fast-commerce browsing with calmer spacing, better visual hierarchy, and grocery-first storytelling that still feels quick and conversion ready.
           </p>
         </div>
         <div className="surface-card overflow-hidden p-5">
           <div className="rounded-[1.75rem] bg-brand-soft p-4">
             <Image
               src="/images/hero/wellness-crate.svg"
-              alt="About FreshCart Studio"
+              alt="About PrimeBasket"
               width={560}
               height={360}
               sizes="(min-width: 1024px) 40vw, 92vw"

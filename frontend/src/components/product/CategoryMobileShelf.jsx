@@ -136,16 +136,21 @@ const CategoryRail = memo(function CategoryRail({ categories, activeCategory, ac
             </>
           );
 
-          if (onCategorySelect) {
-            return (
-              <button key={category.slug} type="button" onClick={() => onCategorySelect(category.slug)} className={itemClassName} aria-pressed={active}>
-                {content}
-              </button>
-            );
-          }
-
           return (
-            <Link key={category.slug} href={buildUrl(`/categories/${category.slug}`, categoryLinkParams(activeFilters))} className={itemClassName}>
+            <Link
+              key={category.slug}
+              href={buildUrl(`/categories/${category.slug}`, categoryLinkParams(activeFilters))}
+              onClick={
+                onCategorySelect
+                  ? (event) => {
+                      event.preventDefault();
+                      onCategorySelect(category.slug);
+                    }
+                  : undefined
+              }
+              aria-current={active ? "page" : undefined}
+              className={itemClassName}
+            >
               {content}
             </Link>
           );
@@ -473,14 +478,21 @@ export default function CategoryMobileShelf({
               {childCategories.length ? (
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   {childCategories.slice(0, 6).map((child) => (
-                    <button
+                    <Link
                       key={child.id}
-                      type="button"
-                      onClick={() => onCategorySelect?.(child.slug)}
+                      href={buildUrl(`/categories/${child.slug}`, categoryLinkParams(activeFilters))}
+                      onClick={
+                        onCategorySelect
+                          ? (event) => {
+                              event.preventDefault();
+                              onCategorySelect(child.slug);
+                            }
+                          : undefined
+                      }
                       className="rounded-pill border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-600 transition hover:border-[#cfe5bf] hover:text-[#2f8f2f]"
                     >
                       {child.shortName || child.name}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               ) : null}
@@ -519,7 +531,7 @@ export default function CategoryMobileShelf({
                     onClick={openFilterPanel}
                     className="inline-flex min-h-[2.7rem] items-center gap-2 rounded-pill border border-slate-200 bg-white px-3.5 py-2 text-sm font-semibold text-slate-700 shadow-soft transition hover:border-slate-300 hover:text-slate-950"
                   >
-                    <SlidersHorizontal className="h-4 w-4 text-[#1195e8]" />
+                    <SlidersHorizontal className="h-4 w-4 text-brand" />
                     Filter
                     {activeFilterCount ? (
                       <span className="inline-flex min-w-[1.4rem] items-center justify-center rounded-full bg-[#eef8e8] px-1.5 py-0.5 text-[10px] font-bold text-[#2f8f2f]">

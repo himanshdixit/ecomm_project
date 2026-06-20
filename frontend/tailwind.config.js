@@ -12,13 +12,13 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          DEFAULT: "#7AB640",
-          dark: "#183227",
-          soft: "#F5F8EA",
-          accent: "#FFB938",
-          mint: "#DCEFD2",
-          cream: "#FFF7E8",
-          ink: "#102217",
+          DEFAULT: "#2D66D7",
+          dark: "#163C92",
+          soft: "#F5F7FF",
+          accent: "#FFC75A",
+          mint: "#DCE7FF",
+          cream: "#FFF4E8",
+          ink: "#112B63",
         },
       },
       fontFamily: {
@@ -27,14 +27,14 @@ module.exports = {
       },
       backgroundImage: {
         "hero-radial":
-          "radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), rgba(245, 248, 234, 0.72) 40%, rgba(220, 239, 210, 0.92) 100%)",
+          "radial-gradient(circle at top left, rgba(255, 255, 255, 0.97), rgba(245, 247, 255, 0.86) 40%, rgba(220, 231, 255, 0.94) 100%)",
         "mesh-green":
-          "linear-gradient(135deg, rgba(122, 182, 64, 0.18), rgba(255, 185, 56, 0.18)), radial-gradient(circle at 20% 20%, rgba(255,255,255,0.9), transparent 38%), radial-gradient(circle at 80% 0%, rgba(122,182,64,0.16), transparent 32%)",
+          "linear-gradient(135deg, rgba(45, 102, 215, 0.14), rgba(255, 199, 90, 0.18)), radial-gradient(circle at 20% 20%, rgba(255,255,255,0.94), transparent 38%), radial-gradient(circle at 80% 0%, rgba(66,160,238,0.14), transparent 32%)",
       },
       boxShadow: {
-        card: "0 20px 45px rgba(14, 31, 18, 0.08)",
-        soft: "0 10px 30px rgba(16, 34, 23, 0.08)",
-        glow: "0 16px 40px rgba(122, 182, 64, 0.22)",
+        card: "0 24px 52px rgba(21, 50, 117, 0.1)",
+        soft: "0 12px 34px rgba(17, 43, 99, 0.1)",
+        glow: "0 18px 42px rgba(45, 102, 215, 0.22)",
       },
       borderRadius: {
         card: "1.5rem",

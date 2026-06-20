@@ -31,7 +31,16 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const { product } = await getProductDetail(slug);
+  const { product, status } = await getProductDetail(slug);
+
+  if (!product && status === 404) {
+    return buildMetadata({
+      title: "Product",
+      description: "Browse premium grocery products and daily essentials.",
+      path: `/products/${slug}`,
+      robots: { index: false, follow: false },
+    });
+  }
 
   if (!product) {
     return buildMetadata({
@@ -53,10 +62,14 @@ export async function generateMetadata({ params }) {
 
 export default async function ProductDetailPage({ params }) {
   const { slug } = await params;
-  const { product, relatedProducts } = await getProductDetail(slug);
+  const { product, relatedProducts, status } = await getProductDetail(slug);
+
+  if (status === 404) {
+    notFound();
+  }
 
   if (!product) {
-    notFound();
+    throw new Error("Unable to load this product right now.");
   }
 
   const categoryPath = product.category?.path || (product.category ? [{ name: product.category.name, slug: product.category.slug }] : []);
@@ -170,7 +183,7 @@ export default async function ProductDetailPage({ params }) {
             <div className="retail-panel overflow-hidden p-4 sm:p-6">
               <div className="relative flex flex-wrap items-start justify-between gap-3 pb-4">
                 <div className="flex flex-wrap gap-2">
-                  <span className="rounded-pill bg-[#162033] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/90">{product.badge}</span>
+                  <span className="rounded-pill bg-brand-dark px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/90">{product.badge}</span>
                   {product.variantCount > 1 ? <span className="rounded-pill bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-600">{product.variantCount} pack sizes</span> : null}
                 </div>
                 <div className="inline-flex items-center gap-1 rounded-pill bg-white/90 px-3 py-1.5 text-sm font-semibold text-amber-500 shadow-soft">
@@ -180,7 +193,7 @@ export default async function ProductDetailPage({ params }) {
                 </div>
               </div>
 
-              <ProductImageGallery productName={product.name} images={productGalleryImages} tint={product.tint || "#eef6e8"} />
+              <ProductImageGallery productName={product.name} images={productGalleryImages} tint={product.tint || "#eef4ff"} />
 
               <div className="mt-4 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-[1.2rem] bg-white/80 px-4 py-3 shadow-soft">
@@ -220,7 +233,7 @@ export default async function ProductDetailPage({ params }) {
 
                 return (
                   <div key={item.title} className="surface-card p-5">
-                    <Icon className="mb-3 h-6 w-6 text-[#1195e8]" />
+                    <Icon className="mb-3 h-6 w-6 text-brand" />
                     <h3 className="mb-2 text-lg">{item.title}</h3>
                     <p className="text-sm leading-6 text-slate-600">{item.text}</p>
                   </div>
@@ -243,16 +256,16 @@ export default async function ProductDetailPage({ params }) {
               <p className="mt-3 text-base text-slate-500">{unitDescription}</p>
               <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">{truncateText(descriptionText, 220)}</p>
 
-              <div className="mt-6 flex flex-wrap items-end gap-4 rounded-[1.5rem] bg-[#f7fbf2] p-4 sm:p-5">
+              <div className="mt-6 flex flex-wrap items-end gap-4 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(238,244,255,0.95),rgba(255,247,235,0.95))] p-4 sm:p-5">
                 <div>
                   <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{product.variantCount > 1 ? "Starting at" : "Price"}</div>
                   <div className="mt-1 text-4xl font-bold text-brand-dark">{formatCurrency(product.price)}</div>
                   {product.originalPrice > product.price ? <div className="mt-1 text-base text-slate-400 line-through">{formatCurrency(product.originalPrice)}</div> : null}
                 </div>
                 {savingsAmount > 0 ? (
-                  <div className="rounded-[1.1rem] bg-white px-4 py-2 text-sm font-medium text-emerald-700 shadow-soft">
-                    Save {formatCurrency(savingsAmount)}
-                  </div>
+                    <div className="rounded-[1.1rem] bg-white px-4 py-2 text-sm font-medium text-brand-dark shadow-soft">
+                      Save {formatCurrency(savingsAmount)}
+                    </div>
                 ) : null}
               </div>
 
@@ -266,7 +279,7 @@ export default async function ProductDetailPage({ params }) {
               <div className="mt-4 grid gap-3">
                 {product.highlights.map((highlight) => (
                   <div key={highlight} className="flex items-start gap-3 rounded-[1.15rem] bg-slate-50 px-4 py-3 text-sm leading-6 text-slate-600">
-                    <Check className="mt-1 h-4 w-4 shrink-0 text-[#1195e8]" />
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-brand" />
                     <span>{highlight}</span>
                   </div>
                 ))}

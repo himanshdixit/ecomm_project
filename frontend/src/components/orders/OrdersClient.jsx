@@ -237,7 +237,7 @@ export default function OrdersClient({ user, embedded = false }) {
               id={`order-${order.id}`}
               className={cn(
                 "surface-card scroll-mt-28 space-y-5 p-5 transition sm:p-6",
-                focusedOrderId === order.id ? "ring-2 ring-[#1195e8]/25 shadow-[0_18px_38px_rgba(17,149,232,0.12)]" : ""
+                focusedOrderId === order.id ? "ring-2 ring-brand/25 shadow-[0_18px_38px_rgba(45,102,215,0.12)]" : ""
               )}
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -247,13 +247,13 @@ export default function OrdersClient({ user, embedded = false }) {
                   <div className="mt-2 flex flex-wrap gap-2 text-sm text-slate-500">
                     {order.shippingAddress?.city ? (
                       <span className="inline-flex items-center gap-2 rounded-pill bg-slate-50 px-3 py-1.5">
-                        <MapPin className="h-4 w-4 text-[#1195e8]" />
+                        <MapPin className="h-4 w-4 text-brand" />
                         {order.shippingAddress.city}, {order.shippingAddress.state}
                       </span>
                     ) : null}
                     {order.deliverySlot ? (
                       <span className="inline-flex items-center gap-2 rounded-pill bg-slate-50 px-3 py-1.5">
-                        <Clock3 className="h-4 w-4 text-[#1195e8]" />
+                        <Clock3 className="h-4 w-4 text-brand" />
                         {order.deliverySlot}
                       </span>
                     ) : null}
@@ -267,7 +267,7 @@ export default function OrdersClient({ user, embedded = false }) {
 
               <div className="space-y-3 rounded-[1.35rem] border border-slate-100 bg-[#fbfcf8] p-4">
                 <div className="relative h-2 rounded-full bg-slate-100">
-                  <div className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#7ab640,#1195e8)]" style={{ width: getProgressWidth(order.orderStatus) }} />
+                  <div className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#ffc75a,#2d66d7)]" style={{ width: getProgressWidth(order.orderStatus) }} />
                 </div>
                 <div className="grid grid-cols-5 gap-2 text-[11px] font-medium text-slate-500">
                   {ORDER_STEPS.map((step, index) => {

@@ -72,7 +72,7 @@ function StatCard({ eyebrow, value, description, icon: Icon }) {
           <div className="mt-2 text-3xl font-semibold text-brand-dark">{value}</div>
           <div className="mt-2 text-sm leading-6 text-slate-500">{description}</div>
         </div>
-        <div className="flex h-11 w-11 items-center justify-center rounded-[1rem] bg-[#eef7ff] text-[#1195e8] shadow-soft">
+        <div className="flex h-11 w-11 items-center justify-center rounded-[1rem] bg-brand-soft text-brand shadow-soft">
           <Icon className="h-5 w-5" />
         </div>
       </div>
@@ -99,7 +99,7 @@ function OrderTrackerCard({ order }) {
 
       <div className="mt-4 space-y-3">
         <div className="relative h-2 rounded-full bg-slate-100">
-          <div className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#7ab640,#1195e8)]" style={{ width: getProgressWidth(order.orderStatus) }} />
+          <div className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#ffc75a,#2d66d7)]" style={{ width: getProgressWidth(order.orderStatus) }} />
         </div>
         <div className="grid grid-cols-5 gap-2 text-[11px] font-medium text-slate-500">
           {ORDER_STEPS.map((step, index) => {
@@ -117,7 +117,7 @@ function OrderTrackerCard({ order }) {
       <div className="mt-4 flex flex-wrap gap-2 text-sm text-slate-500">
         {order.shippingAddress?.city ? (
           <span className="inline-flex items-center gap-2 rounded-pill bg-slate-50 px-3 py-1.5">
-            <MapPin className="h-4 w-4 text-[#1195e8]" />
+            <MapPin className="h-4 w-4 text-brand" />
             {order.shippingAddress.city}, {order.shippingAddress.state}
           </span>
         ) : null}
@@ -416,15 +416,15 @@ export default function AccountDashboardClient({ initialUser }) {
             <h2 className="mt-2 text-2xl">What this profile is ready for</h2>
             <div className="mt-5 space-y-3 text-sm text-slate-600">
               <div className="flex items-start gap-3 rounded-[1.25rem] bg-slate-50 px-4 py-3">
-                <Sparkles className="mt-1 h-4 w-4 shrink-0 text-[#1195e8]" />
+                <Sparkles className="mt-1 h-4 w-4 shrink-0 text-brand" />
                 Rewards and order context now live together for faster repeat shopping.
               </div>
               <div className="flex items-start gap-3 rounded-[1.25rem] bg-slate-50 px-4 py-3">
-                <Clock3 className="mt-1 h-4 w-4 shrink-0 text-[#1195e8]" />
+                <Clock3 className="mt-1 h-4 w-4 shrink-0 text-brand" />
                 Active orders stay visible with clear delivery milestones and payment state.
               </div>
               <div className="flex items-start gap-3 rounded-[1.25rem] bg-slate-50 px-4 py-3">
-                <Heart className="mt-1 h-4 w-4 shrink-0 text-[#1195e8]" />
+                <Heart className="mt-1 h-4 w-4 shrink-0 text-brand" />
                 Wishlist, cart, and saved addresses stay linked through the same account surface.
               </div>
             </div>

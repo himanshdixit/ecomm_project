@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Contact",
   description:
-    "Contact FreshCart Studio for grocery support, delivery questions, partnership enquiries, and storefront help with fast, visible support channels.",
+    "Contact PrimeBasket for grocery support, delivery questions, partnership enquiries, and storefront help with fast, visible support channels.",
   path: "/contact",
   keywords: ["contact grocery support", "delivery support", "storefront contact page"],
 });

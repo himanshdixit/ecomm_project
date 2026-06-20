@@ -1,37 +1,37 @@
 export const categoryThemeMap = {
   "fresh-produce": {
     image: "/images/products/fruit-basket.svg",
-    tint: "#F2FAE7",
+    tint: "#EEF4FF",
     badge: "Fresh market",
   },
   "fresh-fruits": {
     image: "/images/products/fruit-basket.svg",
-    tint: "#FFF2D9",
+    tint: "#FFF3E2",
     badge: "Fruit aisle",
   },
   "tropical-fruits": {
     image: "/images/products/fruit-basket.svg",
-    tint: "#FFF1CC",
+    tint: "#FFF0DA",
     badge: "Season special",
   },
   "citrus-fruits": {
     image: "/images/products/fruit-basket.svg",
-    tint: "#FFF0C2",
+    tint: "#FFEACF",
     badge: "Vitamin picks",
   },
   "fresh-vegetables": {
     image: "/images/products/produce-crate.svg",
-    tint: "#E8F7D8",
+    tint: "#EEF5FF",
     badge: "Farm fresh",
   },
   "leafy-vegetables": {
     image: "/images/products/produce-crate.svg",
-    tint: "#E3F4D4",
+    tint: "#E9F3FF",
     badge: "Leafy greens",
   },
   "daily-vegetables": {
     image: "/images/products/produce-crate.svg",
-    tint: "#FDEBDD",
+    tint: "#FFF2E6",
     badge: "Daily kitchen",
   },
   "dairy-breakfast": {
@@ -51,37 +51,37 @@ export const categoryThemeMap = {
   },
   "staples-cooking": {
     image: "/images/products/produce-crate.svg",
-    tint: "#FFF3DD",
+    tint: "#FFF4E6",
     badge: "Pantry edit",
   },
   "rice-grains": {
     image: "/images/products/produce-crate.svg",
-    tint: "#FBF0DA",
+    tint: "#FFF2E2",
     badge: "Bulk grains",
   },
   "basmati-rice": {
     image: "/images/products/produce-crate.svg",
-    tint: "#F8ECD1",
+    tint: "#FFF0DB",
     badge: "Family packs",
   },
   "snacks-beverages": {
     image: "/images/products/snack-box.svg",
-    tint: "#FFF0E8",
+    tint: "#FFF2EC",
     badge: "Snack shelf",
   },
   "cookies-gift-packs": {
     image: "/images/products/snack-box.svg",
-    tint: "#FDEAE1",
+    tint: "#FFF0EA",
     badge: "Gift boxes",
   },
   "personal-home-care": {
     image: "/images/products/home-care.svg",
-    tint: "#EBF7F7",
+    tint: "#ECF6FF",
     badge: "Home care",
   },
   "soaps-bars": {
     image: "/images/products/home-care.svg",
-    tint: "#F4FAFB",
+    tint: "#F3F8FF",
     badge: "Bath bars",
   },
 };
@@ -92,28 +92,28 @@ export const homeDealCards = [
     description: "On select dairy packs, yogurt cups, and breakfast essentials.",
     eyebrow: "Limited deal",
     href: "/categories/dairy-breakfast",
-    tint: "linear-gradient(135deg, rgba(224, 241, 255, 0.95), rgba(240, 247, 255, 0.9))",
+    tint: "linear-gradient(135deg, rgba(225, 236, 255, 0.96), rgba(245, 249, 255, 0.92))",
   },
   {
     title: "Tropical Picks",
     description: "Mangoes and fruit boxes curated for gifting, smoothies, and dessert tables.",
     eyebrow: "Today only",
     href: "/categories/tropical-fruits",
-    tint: "linear-gradient(135deg, rgba(255, 243, 214, 0.95), rgba(255, 248, 232, 0.92))",
+    tint: "linear-gradient(135deg, rgba(255, 243, 224, 0.96), rgba(255, 249, 239, 0.92))",
   },
   {
     title: "Under \u20B9100",
     description: "Everyday kitchen essentials with faster browsing and clearer pack pricing.",
     eyebrow: "Pantry edit",
     href: "/products?maxPrice=100",
-    tint: "linear-gradient(135deg, rgba(223, 244, 234, 0.95), rgba(240, 251, 245, 0.92))",
+    tint: "linear-gradient(135deg, rgba(231, 239, 255, 0.96), rgba(245, 248, 255, 0.92))",
   },
   {
     title: "Family Packs",
     description: "Bulk rice bags, soap value packs, and gift boxes designed for weekly restocks.",
     eyebrow: "Smart savings",
     href: "/categories/staples-cooking",
-    tint: "linear-gradient(135deg, rgba(236, 240, 255, 0.95), rgba(248, 250, 255, 0.92))",
+    tint: "linear-gradient(135deg, rgba(255, 239, 220, 0.96), rgba(255, 248, 240, 0.92))",
   },
 ];
 
@@ -122,7 +122,7 @@ export function getCategoryTheme(category = {}) {
 
   return {
     image: theme.image || category.image || "/images/products/produce-crate.svg",
-    tint: theme.tint || category.tint || "#F5F8EA",
+    tint: theme.tint || category.tint || "#F5F7FF",
     badge: theme.badge || (category.childrenCount ? `${category.childrenCount} sub-aisles` : "Fresh picks"),
   };
 }

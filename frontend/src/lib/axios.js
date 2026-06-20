@@ -3,9 +3,9 @@ import axios from "axios";
 import { normalizeApiError } from "@/lib/api-error";
 import { API_BASE_URL } from "@/lib/api-config";
 
-const AUTH_STORAGE_KEY = "codex_auth_token";
-export const API_ERROR_EVENT = "codex-commerce:api-error";
-export const API_AUTH_ERROR_EVENT = "codex-commerce:auth-error";
+const AUTH_STORAGE_KEY = "primebasket_auth_token";
+export const API_ERROR_EVENT = "primebasket:api-error";
+export const API_AUTH_ERROR_EVENT = "primebasket:auth-error";
 
 let inMemoryAuthToken = null;
 

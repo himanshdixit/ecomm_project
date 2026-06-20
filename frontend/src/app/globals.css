@@ -12,10 +12,10 @@ html {
 
 body {
   @apply bg-brand-soft font-sans text-brand-ink antialiased;
-  background-color: #f6f8ee;
+  background-color: #f6f8ff;
   background-image:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.96), rgba(247, 249, 239, 0.9) 32%, rgba(231, 242, 219, 0.72) 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(244, 248, 233, 0.88));
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.98), rgba(244, 247, 255, 0.92) 34%, rgba(221, 232, 255, 0.76) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 246, 235, 0.88));
   letter-spacing: -0.01em;
   font-feature-settings: "ss01" 1, "cv02" 1, "cv03" 1;
 }
@@ -26,7 +26,7 @@ body {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(122, 182, 64, 0.45) transparent;
+  scrollbar-color: rgba(45, 102, 215, 0.4) transparent;
 }
 
 ::-webkit-scrollbar {
@@ -35,7 +35,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(122, 182, 64, 0.4);
+  background: rgba(45, 102, 215, 0.36);
   border-radius: 999px;
 }
 
@@ -74,7 +74,7 @@ body {
 
   .surface-card {
     @apply rounded-[1.35rem] border border-white/80 bg-white/95 shadow-card sm:rounded-[1.75rem];
-    box-shadow: 0 22px 50px rgba(15, 31, 23, 0.08);
+    box-shadow: 0 24px 52px rgba(21, 50, 117, 0.1);
   }
 
   .pill-chip {
@@ -90,7 +90,7 @@ body {
   }
 
   .button-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-[#1195e8] px-4 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#0d84cf] disabled:cursor-not-allowed disabled:opacity-70 sm:px-5 sm:py-3;
+    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-brand px-4 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-70 sm:px-5 sm:py-3;
   }
 
   .button-secondary {
@@ -103,7 +103,7 @@ body {
 
   .retail-panel {
     @apply rounded-[1.5rem] border border-white/80 bg-white/95 shadow-card sm:rounded-[2rem];
-    box-shadow: 0 28px 70px rgba(15, 31, 23, 0.09);
+    box-shadow: 0 30px 72px rgba(22, 60, 146, 0.11);
   }
 
   .topbar-link {
@@ -150,11 +150,11 @@ body {
   }
 
   .richtext-content blockquote {
-    @apply mt-4 rounded-[1.25rem] border-l-4 border-[#1195e8] bg-slate-50 px-4 py-3 text-slate-700;
+    @apply mt-4 rounded-[1.25rem] border-l-4 border-brand bg-slate-50 px-4 py-3 text-slate-700;
   }
 
   .richtext-content a {
-    @apply font-semibold text-[#1195e8] underline decoration-[#1195e8]/30 underline-offset-4 hover:text-[#0d84cf];
+    @apply font-semibold text-brand underline decoration-brand/30 underline-offset-4 hover:text-brand-dark;
   }
 }
 

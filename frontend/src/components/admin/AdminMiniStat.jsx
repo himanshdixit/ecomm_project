@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 const toneClasses = {
   emerald: "from-emerald-500/12 via-emerald-500/4 to-transparent text-emerald-700 ring-emerald-500/20",
-  blue: "from-sky-500/12 via-sky-500/4 to-transparent text-sky-700 ring-sky-500/20",
+  blue: "from-brand/12 via-brand/4 to-transparent text-brand ring-brand/20",
   amber: "from-amber-500/12 via-amber-500/4 to-transparent text-amber-700 ring-amber-500/20",
   violet: "from-violet-500/12 via-violet-500/4 to-transparent text-violet-700 ring-violet-500/20",
   slate: "from-slate-500/10 via-slate-500/4 to-transparent text-slate-700 ring-slate-500/15",

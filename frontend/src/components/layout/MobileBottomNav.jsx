@@ -51,7 +51,7 @@ export default function MobileBottomNav() {
                 href={item.href}
                 className={cn(
                   "relative flex min-h-[3.9rem] flex-col items-center justify-center gap-1 rounded-[1rem] px-1 py-2 text-[10px] font-semibold transition",
-                  active ? "bg-[#1195e8] text-white shadow-[0_12px_24px_rgba(17,149,232,0.24)]" : "text-slate-600 hover:bg-slate-100/80 hover:text-slate-950"
+                  active ? "bg-brand text-white shadow-[0_12px_24px_rgba(45,102,215,0.24)]" : "text-slate-600 hover:bg-slate-100/80 hover:text-slate-950"
                 )}
               >
                 <span className={cn("flex h-7 w-7 items-center justify-center rounded-full transition", active ? "bg-white/15" : "bg-slate-100 text-slate-700")}>

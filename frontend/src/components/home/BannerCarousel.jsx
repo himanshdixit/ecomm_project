@@ -60,7 +60,7 @@ export default function BannerCarousel({ slides, categories = [] }) {
             </div>
 
             <div className="space-y-3 sm:space-y-4">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-700 sm:text-sm sm:tracking-[0.22em]">{activeSlide.eyebrow}</div>
+              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-dark sm:text-sm sm:tracking-[0.22em]">{activeSlide.eyebrow}</div>
               <h1 className="max-w-[12ch] text-[2.1rem] leading-[0.98] sm:max-w-xl sm:text-[3.4rem] lg:text-[4rem]">{activeSlide.title}</h1>
               <p className="max-w-xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">{activeSlide.description}</p>
             </div>
@@ -84,7 +84,7 @@ export default function BannerCarousel({ slides, categories = [] }) {
                     className={`rounded-[1.1rem] border border-white/75 bg-white/78 px-3 py-2.5 shadow-soft backdrop-blur sm:rounded-[1.3rem] sm:px-4 sm:py-3 ${index === 2 ? "hidden sm:block" : "block"}`}
                   >
                     <div className="flex items-center gap-2 text-sm font-semibold text-brand-dark">
-                      <Icon className="h-4 w-4 text-[#1195e8]" />
+                      <Icon className="h-4 w-4 text-brand" />
                       {point.label}
                     </div>
                   </div>

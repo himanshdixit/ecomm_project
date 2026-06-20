@@ -12,7 +12,7 @@ export default function SectionHeading({ eyebrow, title, description, actionLabe
       {actionLabel ? (
         <Link
           href={actionHref}
-          className="inline-flex w-fit items-center gap-2 rounded-pill border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-brand-dark shadow-soft transition hover:-translate-y-0.5 hover:border-sky-200 hover:text-sky-700"
+          className="inline-flex w-fit items-center gap-2 rounded-pill border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-brand-dark shadow-soft transition hover:-translate-y-0.5 hover:border-brand/20 hover:text-brand"
         >
           {actionLabel}
           <ArrowRight className="h-4 w-4" />

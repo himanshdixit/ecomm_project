@@ -7,7 +7,7 @@ export const categories = [
     description: "Leafy picks, roots, and farm-cut essentials delivered chilled and crisp.",
     itemCount: 142,
     deliveryTime: "9 mins",
-    tint: "#E7F8D8",
+    tint: "#EAF2FF",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const categories = [
     description: "Handpicked, naturally sweet fruit boxes for breakfast bowls and snack breaks.",
     itemCount: 98,
     deliveryTime: "11 mins",
-    tint: "#FFF0D2",
+    tint: "#FFF2DE",
   },
   {
     id: 3,
@@ -57,7 +57,7 @@ export const categories = [
     description: "Daily cleaning essentials with easy bulk packs and curated combos.",
     itemCount: 84,
     deliveryTime: "18 mins",
-    tint: "#EAF6F7",
+    tint: "#ECF5FF",
   },
 ];
 
@@ -70,7 +70,7 @@ export const heroSlides = [
     cta: "Shop groceries",
     secondaryCta: "See offers",
     image: "/images/hero/market-fresh.svg",
-    accent: "#E8F7D8",
+    accent: "#E3EEFF",
     badge: "Up to 35% off on fresh picks",
   },
   {
@@ -81,7 +81,7 @@ export const heroSlides = [
     cta: "Browse categories",
     secondaryCta: "Trending products",
     image: "/images/hero/snack-party.svg",
-    accent: "#FFF2D9",
+    accent: "#FFF0DE",
     badge: "Party bundles from \u20B919",
   },
   {
@@ -369,7 +369,7 @@ export const contactCards = [
   },
   {
     title: "Vendor partnerships",
-    value: "partners@freshcart.studio",
+    value: "partners@primebasket.local",
     detail: "For farm sourcing, artisanal brands, and retail collaborations.",
   },
   {

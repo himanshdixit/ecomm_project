@@ -24,6 +24,7 @@ import { getApiErrorMessage } from "@/lib/api-error";
 import { resolveMediaUrl, shouldBypassNextImageOptimization } from "@/lib/api-config";
 import { formatDate } from "@/lib/format";
 import { cn, formatCurrency } from "@/lib/utils";
+import { brandIdentity } from "@/lib/branding";
 import { orderService } from "@/services/api";
 import { fetchCart } from "@/store/slices/cartSlice";
 
@@ -103,7 +104,7 @@ const buildInvoiceMarkup = (order) => {
     <style>
       body { font-family: Arial, sans-serif; color: #0f172a; margin: 32px; }
       .header { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; margin-bottom:32px; }
-      .brand { font-size: 28px; font-weight: 700; color: #1195e8; }
+      .brand { font-size: 28px; font-weight: 700; color: #2D66D7; }
       .muted { color:#64748b; font-size: 13px; line-height: 1.6; }
       .grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px; }
       .card { border:1px solid #e2e8f0; border-radius:16px; padding:18px; }
@@ -121,7 +122,7 @@ const buildInvoiceMarkup = (order) => {
   <body>
     <div class="header">
       <div>
-        <div class="brand">FreshCart</div>
+        <div class="brand">${escapeHtml(brandIdentity.name)}</div>
         <div class="muted">Premium grocery delivery invoice</div>
       </div>
       <div>
@@ -166,7 +167,7 @@ const buildInvoiceMarkup = (order) => {
     </div>
 
     <div class="footer">
-      This invoice was generated from your FreshCart account. Use your browser's Save as PDF option after print opens if you want a downloadable copy.
+      This invoice was generated from your ${escapeHtml(brandIdentity.name)} account. Use your browser's Save as PDF option after print opens if you want a downloadable copy.
     </div>
   </body>
 </html>`;
@@ -368,12 +369,12 @@ export default function OrderDetailClient({ user, orderId }) {
 
       <section className="surface-card p-5 sm:p-6">
         <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-          <Truck className="h-4 w-4 text-[#1195e8]" />
+          <Truck className="h-4 w-4 text-brand" />
           Delivery progress
         </div>
         <div className="mt-4 space-y-4 rounded-[1.4rem] border border-slate-100 bg-[#fbfcf8] p-4 sm:p-5">
           <div className="relative h-2 rounded-full bg-slate-100">
-            <div className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#7ab640,#1195e8)]" style={{ width: getProgressWidth(order.orderStatus) }} />
+            <div className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#ffc75a,#2d66d7)]" style={{ width: getProgressWidth(order.orderStatus) }} />
           </div>
           <div className="grid grid-cols-5 gap-2 text-[11px] font-medium text-slate-500">
             {ORDER_STEPS.map((step, index) => {
@@ -407,7 +408,7 @@ export default function OrderDetailClient({ user, orderId }) {
         <section className="space-y-5">
           <section className="surface-card p-5 sm:p-6">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-              <ShoppingBag className="h-4 w-4 text-[#1195e8]" />
+              <ShoppingBag className="h-4 w-4 text-brand" />
               Ordered items
             </div>
             <div className="mt-5 space-y-3">
@@ -421,7 +422,7 @@ export default function OrderDetailClient({ user, orderId }) {
                       <Image src={productImage} alt={item.name} width={96} height={96} className="h-16 w-16 object-contain" unoptimized={shouldBypassNextImageOptimization(productImage)} />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <Link href={productHref} className="line-clamp-2 font-semibold text-brand-dark hover:text-[#1195e8]">{item.name}</Link>
+                      <Link href={productHref} className="line-clamp-2 font-semibold text-brand-dark hover:text-brand">{item.name}</Link>
                       <div className="mt-1 text-sm text-slate-500">Qty {item.quantity} | {item.unit}</div>
                       <div className="mt-2 flex flex-wrap gap-2 text-sm text-slate-500">
                         <span>{formatCurrency(item.price)} each</span>
@@ -480,7 +481,7 @@ export default function OrderDetailClient({ user, orderId }) {
         <aside className="space-y-5">
           <section className="surface-card p-5 sm:p-6">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-              <MapPin className="h-4 w-4 text-[#1195e8]" />
+              <MapPin className="h-4 w-4 text-brand" />
               Delivery address
             </div>
             <div className="mt-4 rounded-[1.35rem] bg-slate-50 px-4 py-4 text-sm leading-7 text-slate-600">
@@ -495,7 +496,7 @@ export default function OrderDetailClient({ user, orderId }) {
 
           <section className="surface-card p-5 sm:p-6">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-              <ReceiptText className="h-4 w-4 text-[#1195e8]" />
+              <ReceiptText className="h-4 w-4 text-brand" />
               Payment snapshot
             </div>
             <div className="mt-4 space-y-3 text-sm text-slate-600">
@@ -516,7 +517,7 @@ export default function OrderDetailClient({ user, orderId }) {
 
           <section className="surface-card p-5 sm:p-6">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-              <ShieldCheck className="h-4 w-4 text-[#1195e8]" />
+              <ShieldCheck className="h-4 w-4 text-brand" />
               Support and records
             </div>
             <div className="mt-4 space-y-3 text-sm text-slate-600">

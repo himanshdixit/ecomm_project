@@ -27,7 +27,7 @@ const getBadgeClass = (value) => {
   }
 
   if (["processing", "shipped"].includes(value)) {
-    return "bg-sky-50 text-sky-700";
+    return "bg-brand-soft text-brand-dark";
   }
 
   if (["failed", "cancelled", "refunded"].includes(value)) {

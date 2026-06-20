@@ -10,8 +10,8 @@ export default function AdminShell({ admin, children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#f3f6fb] text-slate-900">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.14),transparent_25%),radial-gradient(circle_at_top_right,rgba(14,165,233,0.11),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.98),rgba(241,245,249,0.96))]" />
+    <div className="relative min-h-screen overflow-hidden bg-[#f4f7ff] text-slate-900">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(45,102,215,0.18),transparent_25%),radial-gradient(circle_at_top_right,rgba(255,199,90,0.14),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.99),rgba(244,247,255,0.97))]" />
       <div className="pointer-events-none absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] [background-size:40px_40px]" />
       <div className="relative flex min-h-screen">
         <AdminSidebar admin={admin} isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />

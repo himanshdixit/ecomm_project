@@ -5,9 +5,9 @@ import { Clock3, PackageCheck, ShoppingCart, Sparkles } from "lucide-react";
 
 const iconMap = [Clock3, Sparkles, PackageCheck, ShoppingCart];
 const accentMap = [
-  "from-sky-50 to-white text-sky-700",
-  "from-emerald-50 to-white text-emerald-700",
-  "from-amber-50 to-white text-amber-700",
+  "from-brand-soft to-white text-brand",
+  "from-brand-cream to-white text-brand-dark",
+  "from-[#fff0d6] to-white text-[#b96b2f]",
   "from-slate-100 to-white text-slate-700",
 ];
 
@@ -27,7 +27,7 @@ export default function FeatureStrip({ items }) {
             transition={{ duration: 0.4, delay: index * 0.08 }}
             className="relative overflow-hidden rounded-[1.3rem] border border-white/80 bg-white p-4 shadow-soft sm:rounded-[1.75rem] sm:p-5"
           >
-            <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#1195e8] via-brand to-brand-accent" />
+            <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-brand via-brand-dark to-brand-accent" />
             <div className="flex items-start justify-between gap-3 sm:gap-4">
               <div className={`rounded-[1rem] bg-gradient-to-br p-2.5 sm:rounded-[1.15rem] sm:p-3 ${accent}`}>
                 <Icon className="h-[18px] w-[18px] sm:h-5 sm:w-5" />

@@ -31,7 +31,7 @@ export default function AccountShell({ user, children }) {
 
   return (
     <main className="page-shell section-gap space-y-5 sm:space-y-6">
-      <section className="retail-panel overflow-hidden border border-white/80 bg-[linear-gradient(135deg,#162033_0%,#1c3358_50%,#1195e8_100%)] text-white">
+      <section className="retail-panel overflow-hidden border border-white/80 bg-[linear-gradient(135deg,#163c92_0%,#2d66d7_58%,#42a0ee_100%)] text-white">
         <div className="grid gap-4 p-5 sm:p-6 lg:grid-cols-[minmax(0,1fr),260px] lg:items-end lg:p-8">
           <div className="space-y-4">
             <div className="inline-flex w-fit items-center gap-2 rounded-pill bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-white/85 backdrop-blur">
@@ -100,11 +100,11 @@ export default function AccountShell({ user, children }) {
                     className={cn(
                       "inline-flex min-h-[3.25rem] shrink-0 items-center gap-3 rounded-[1.15rem] px-3.5 py-3 text-sm font-semibold transition lg:w-full",
                       active
-                        ? "bg-[linear-gradient(135deg,#eff7e9,#f8fdff)] text-brand-dark shadow-soft ring-1 ring-[#dbe8d1]"
+                        ? "bg-[linear-gradient(135deg,#eef4ff,#fff7eb)] text-brand-dark shadow-soft ring-1 ring-brand/15"
                         : "text-slate-600 hover:bg-slate-50 hover:text-slate-950"
                     )}
                   >
-                    <span className={cn("flex h-9 w-9 items-center justify-center rounded-full", active ? "bg-white text-[#1195e8] shadow-soft" : "bg-slate-100 text-slate-500")}>
+                    <span className={cn("flex h-9 w-9 items-center justify-center rounded-full", active ? "bg-white text-brand shadow-soft" : "bg-slate-100 text-slate-500")}>
                       <Icon className="h-4 w-4" />
                     </span>
                     {item.label}

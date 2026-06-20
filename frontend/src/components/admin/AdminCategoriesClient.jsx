@@ -486,7 +486,7 @@ export default function AdminCategoriesClient({ initialCategories = [] }) {
                     <td className="px-4 py-4 first:pl-5 last:pr-5">
                       <div className="flex flex-wrap gap-2">
                         <span className={cn(adminBadgeClass, "bg-slate-100 text-slate-700")}>{getLevelLabel(category.level)}</span>
-                        <span className={cn(adminBadgeClass, "bg-sky-50 text-sky-700")}>Sort {Number(category.sortOrder || 0)}</span>
+                        <span className={cn(adminBadgeClass, "bg-brand-soft text-brand-dark")}>Sort {Number(category.sortOrder || 0)}</span>
                         {category.childrenCount ? <span className={cn(adminBadgeClass, "bg-emerald-50 text-emerald-700")}>{category.childrenCount} children</span> : null}
                         {category.isFeatured ? <span className={cn(adminBadgeClass, "bg-amber-50 text-amber-700")}>Featured</span> : null}
                       </div>

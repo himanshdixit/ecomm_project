@@ -17,7 +17,7 @@ const formatValue = (value, type) => {
 export default function AdminStatCard({ title, value, description, icon: Icon, tone = "emerald", type = "number" }) {
   const toneClasses = {
     emerald: "from-emerald-500/18 via-emerald-500/7 to-transparent text-emerald-700 ring-emerald-500/20",
-    blue: "from-sky-500/18 via-sky-500/7 to-transparent text-sky-700 ring-sky-500/20",
+    blue: "from-brand/18 via-brand/7 to-transparent text-brand ring-brand/20",
     amber: "from-amber-500/18 via-amber-500/7 to-transparent text-amber-700 ring-amber-500/20",
     violet: "from-violet-500/18 via-violet-500/7 to-transparent text-violet-700 ring-violet-500/20",
   };

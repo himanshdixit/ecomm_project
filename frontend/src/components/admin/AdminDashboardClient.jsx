@@ -25,6 +25,14 @@ import AdminTable from "@/components/admin/AdminTable";
 import { formatCompactNumber, formatCurrency, formatDateTime, titleCase } from "@/lib/format";
 
 const statusColors = ["#10B981", "#0EA5E9", "#F59E0B", "#8B5CF6", "#F97316", "#EF4444"];
+const chartContainerProps = {
+  width: "100%",
+  height: "100%",
+  minWidth: 0,
+  minHeight: 280,
+  initialDimension: { width: 520, height: 320 },
+  debounce: 80,
+};
 
 const statCards = [
   {
@@ -99,8 +107,8 @@ export default function AdminDashboardClient({ dashboardData, adminName }) {
 
       <div className="grid gap-6 2xl:grid-cols-[minmax(0,1.5fr)_minmax(340px,1fr)]">
         <AdminSectionCard title="Revenue trend" description="Monthly revenue performance over the last six months.">
-          <div className="h-[280px] w-full sm:h-[320px]">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="h-[280px] w-full min-w-0 sm:h-[320px]">
+            <ResponsiveContainer {...chartContainerProps}>
               <LineChart data={charts.monthlyRevenue || []} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
                 <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fill: "#64748B", fontSize: 12 }} />
@@ -111,15 +119,15 @@ export default function AdminDashboardClient({ dashboardData, adminName }) {
                   tickFormatter={(value) => formatCompactNumber(value)}
                 />
                 <Tooltip formatter={(value) => formatCurrency(value)} />
-                <Line type="monotone" dataKey="value" stroke="#10B981" strokeWidth={3} dot={{ r: 3 }} activeDot={{ r: 5 }} />
+                <Line type="monotone" dataKey="value" stroke="#2D66D7" strokeWidth={3} dot={{ r: 3 }} activeDot={{ r: 5 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </AdminSectionCard>
 
         <AdminSectionCard title="Order mix" description="Distribution of order pipeline states.">
-          <div className="h-[280px] w-full sm:h-[320px]">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="h-[280px] w-full min-w-0 sm:h-[320px]">
+            <ResponsiveContainer {...chartContainerProps}>
               <PieChart>
                 <Pie data={charts.ordersByStatus || []} dataKey="count" nameKey="status" innerRadius={70} outerRadius={100} paddingAngle={3}>
                   {(charts.ordersByStatus || []).map((entry, index) => (
@@ -136,8 +144,8 @@ export default function AdminDashboardClient({ dashboardData, adminName }) {
 
       <div className="grid gap-6 2xl:grid-cols-[minmax(0,1.35fr)_minmax(320px,1fr)]">
         <AdminSectionCard title="User and order growth" description="New users and orders created each month.">
-          <div className="h-[280px] w-full sm:h-[320px]">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="h-[280px] w-full min-w-0 sm:h-[320px]">
+            <ResponsiveContainer {...chartContainerProps}>
               <BarChart
                 data={(charts.monthlyOrders || []).map((entry, index) => ({
                   month: entry.month,
@@ -151,8 +159,8 @@ export default function AdminDashboardClient({ dashboardData, adminName }) {
                 <YAxis tickLine={false} axisLine={false} tick={{ fill: "#64748B", fontSize: 12 }} />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="orders" fill="#0EA5E9" radius={[10, 10, 0, 0]} />
-                <Bar dataKey="users" fill="#8B5CF6" radius={[10, 10, 0, 0]} />
+                <Bar dataKey="orders" fill="#2D66D7" radius={[10, 10, 0, 0]} />
+                <Bar dataKey="users" fill="#F28B47" radius={[10, 10, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>

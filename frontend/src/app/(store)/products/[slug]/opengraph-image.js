@@ -16,7 +16,7 @@ export default async function ProductOpenGraphImage({ params }) {
 
   const productName = product?.name || "Fresh grocery product";
   const description = truncateText(product?.description || "Premium grocery essentials with faster category-based shopping.", 110);
-  const price = product?.price ? `\u20B9${product.price}` : "FreshCart Studio";
+  const price = product?.price ? `\u20B9${product.price}` : siteConfig.name;
 
   return new ImageResponse(
     (
@@ -25,7 +25,7 @@ export default async function ProductOpenGraphImage({ params }) {
           display: "flex",
           height: "100%",
           width: "100%",
-          background: "linear-gradient(135deg, #ecfccb 0%, #d9f99d 22%, #f8fafc 22%, #ffffff 100%)",
+          background: "linear-gradient(135deg, #eef4ff 0%, #dce7ff 24%, #fff7eb 24%, #ffffff 100%)",
           color: "#0f172a",
           padding: "54px",
           fontFamily: "sans-serif",
@@ -58,7 +58,7 @@ export default async function ProductOpenGraphImage({ params }) {
                   alignItems: "center",
                   alignSelf: "flex-start",
                   borderRadius: "9999px",
-                  background: "#183227",
+                  background: "#163C92",
                   color: "white",
                   padding: "12px 20px",
                   fontSize: "22px",
@@ -76,7 +76,7 @@ export default async function ProductOpenGraphImage({ params }) {
                 <div style={{ fontSize: "22px", color: "#64748b", textTransform: "uppercase", letterSpacing: "0.18em" }}>
                   {product?.category?.name || siteConfig.name}
                 </div>
-                <div style={{ fontSize: "44px", fontWeight: 800, color: "#183227" }}>{price}</div>
+                <div style={{ fontSize: "44px", fontWeight: 800, color: "#163C92" }}>{price}</div>
               </div>
               <div style={{ fontSize: "24px", color: "#64748b" }}>{product?.deliveryTime || "Fast delivery"}</div>
             </div>
@@ -85,7 +85,7 @@ export default async function ProductOpenGraphImage({ params }) {
             style={{
               display: "flex",
               width: "32%",
-              background: product?.tint || "#EAF6F7",
+              background: product?.tint || "#F5F7FF",
               alignItems: "center",
               justifyContent: "center",
               position: "relative",
@@ -103,8 +103,8 @@ export default async function ProductOpenGraphImage({ params }) {
               }}
             />
             <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "18px", alignItems: "center", textAlign: "center" }}>
-              <div style={{ fontSize: "28px", color: "#475569", letterSpacing: "0.18em", textTransform: "uppercase" }}>FreshCart</div>
-              <div style={{ fontSize: "34px", fontWeight: 700, color: "#183227" }}>{product?.stock > 0 ? "In stock" : "Sold out"}</div>
+              <div style={{ fontSize: "28px", color: "#475569", letterSpacing: "0.18em", textTransform: "uppercase" }}>{siteConfig.name}</div>
+              <div style={{ fontSize: "34px", fontWeight: 700, color: "#163C92" }}>{product?.stock > 0 ? "In stock" : "Sold out"}</div>
             </div>
           </div>
         </div>

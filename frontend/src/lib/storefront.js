@@ -26,9 +26,13 @@ const buildSearch = (params = {}) => {
   return queryString ? `?${queryString}` : "";
 };
 
-const requestJson = async (path, options = {}) => {
+const requestJsonResult = async (path, options = {}) => {
   if (!API_BASE_URL) {
-    return null;
+    return {
+      ok: false,
+      status: 0,
+      data: null,
+    };
   }
 
   const { revalidate = DEFAULT_REVALIDATE, tags = [] } = options;
@@ -42,13 +46,32 @@ const requestJson = async (path, options = {}) => {
     });
 
     if (!response.ok) {
-      return null;
+      return {
+        ok: false,
+        status: response.status,
+        data: null,
+      };
     }
 
-    return response.json();
+    const payload = await response.json();
+
+    return {
+      ok: true,
+      status: response.status,
+      data: payload?.data ?? null,
+    };
   } catch {
-    return null;
+    return {
+      ok: false,
+      status: 0,
+      data: null,
+    };
   }
+};
+
+const requestJson = async (path, options = {}) => {
+  const result = await requestJsonResult(path, options);
+  return result.data;
 };
 
 const emptyProductResponse = {
@@ -69,7 +92,20 @@ export async function getCategories() {
     revalidate: 900,
     tags: ["categories"],
   });
-  return response?.data?.categories || [];
+  return response?.categories || [];
+}
+
+export async function getCategoryDetail(slug) {
+  const result = await requestJsonResult(`/categories/slug/${slug}`, {
+    revalidate: 300,
+    tags: ["categories", `category:${slug}`],
+  });
+
+  return {
+    ok: result.ok,
+    status: result.status,
+    category: result.data?.category || null,
+  };
 }
 
 export async function getProducts(params = {}) {
@@ -78,21 +114,25 @@ export async function getProducts(params = {}) {
     tags: ["products"],
   });
 
-  return response?.data || emptyProductResponse;
+  if (response?.products && response?.pagination) {
+    return response;
+  }
+
+  return emptyProductResponse;
 }
 
 export async function getProductDetail(slug) {
-  const response = await requestJson(`/products/${slug}`, {
+  const result = await requestJsonResult(`/products/slug/${slug}`, {
     revalidate: 300,
     tags: ["products", `product:${slug}`],
   });
 
-  return (
-    response?.data || {
-      product: null,
-      relatedProducts: [],
-    }
-  );
+  return {
+    ok: result.ok,
+    status: result.status,
+    product: result.data?.product || null,
+    relatedProducts: result.data?.relatedProducts || [],
+  };
 }
 
 export async function getAllProductsForSitemap() {

@@ -1,6 +1,6 @@
 import { stripHtml } from "@/lib/rich-text";
 
-const fallbackSiteName = process.env.NEXT_PUBLIC_APP_NAME || "FreshCart Studio";
+const fallbackSiteName = process.env.NEXT_PUBLIC_APP_NAME || "PrimeBasket";
 const fallbackSiteUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
 export const siteConfig = {
@@ -19,7 +19,7 @@ export const defaultKeywords = [
   "quick commerce",
   "premium grocery store",
   "fruit and vegetable delivery",
-  "FreshCart Studio",
+  "PrimeBasket",
 ];
 
 export const noIndexRobots = {

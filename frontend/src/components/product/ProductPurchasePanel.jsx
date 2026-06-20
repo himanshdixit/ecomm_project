@@ -105,7 +105,7 @@ export default function ProductPurchasePanel({ product }) {
                       <div className="text-base font-semibold text-slate-950">{variant.label}</div>
                       <div className="mt-1 text-xs leading-5 text-slate-500">{variant.packLabel || variant.label}</div>
                     </div>
-                    {variant.isDefault ? <span className="rounded-pill bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#1195e8] ring-1 ring-[#bfdbfe]">Default</span> : null}
+                    {variant.isDefault ? <span className="rounded-pill bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-brand ring-1 ring-brand/15">Default</span> : null}
                   </div>
                   <div className="mt-4 flex items-end justify-between gap-3">
                     <div>

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaBoxOpen, FaChartLine, FaClipboardList, FaLayerGroup, FaUsers } from "react-icons/fa";
 
+import BrandLogo from "@/components/branding/BrandLogo";
+
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: FaChartLine },
   { href: "/admin/products", label: "Products", icon: FaBoxOpen },
@@ -12,6 +14,14 @@ const navItems = [
   { href: "/admin/orders", label: "Orders", icon: FaClipboardList },
   { href: "/admin/users", label: "Users", icon: FaUsers },
 ];
+
+const isNavItemActive = (pathname = "", href = "") => {
+  if (href === "/admin") {
+    return pathname === "/admin";
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+};
 
 export default function AdminSidebar({ admin, isOpen, onClose }) {
   const pathname = usePathname();
@@ -27,21 +37,20 @@ export default function AdminSidebar({ admin, isOpen, onClose }) {
       />
       <aside
         className={clsx(
-          "fixed inset-y-0 left-0 z-40 flex w-[84vw] max-w-[18.5rem] flex-col border-r border-white/10 bg-[linear-gradient(180deg,rgba(2,6,23,0.98),rgba(15,23,42,0.96))] text-slate-200 shadow-[0_30px_80px_rgba(15,23,42,0.45)] transition-transform duration-300 xl:translate-x-0",
+          "fixed inset-y-0 left-0 z-40 flex w-[84vw] max-w-[18.5rem] flex-col border-r border-white/10 bg-[linear-gradient(180deg,rgba(17,43,99,0.98),rgba(22,60,146,0.97),rgba(29,102,188,0.95))] text-slate-200 shadow-[0_30px_80px_rgba(17,43,99,0.45)] transition-transform duration-300 xl:translate-x-0",
           isOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
         <div className="relative overflow-hidden border-b border-white/10 px-5 py-5">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.22),transparent_36%),radial-gradient(circle_at_top_right,rgba(14,165,233,0.18),transparent_28%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,199,90,0.24),transparent_36%),radial-gradient(circle_at_top_right,rgba(66,160,238,0.22),transparent_30%)]" />
           <div className="relative flex items-start justify-between gap-3 xl:block">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
-                <span>FreshCart</span>
-                <span className="rounded-full bg-emerald-400/15 px-2 py-0.5 text-[10px] text-emerald-200">Admin</span>
+              <div className="rounded-[1.3rem] bg-white/96 p-2.5 shadow-[0_20px_44px_rgba(17,43,99,0.2)] w-fit">
+                <BrandLogo href="/admin" className="h-14 w-[210px] rounded-[1rem]" imageClassName="object-cover object-center" />
               </div>
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">Operations suite</p>
-                <h2 className="mt-2 text-2xl font-black tracking-tight text-white">FreshCart HQ</h2>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55">Operations suite</p>
+                <h2 className="mt-2 text-2xl font-black tracking-tight text-white">PrimeBasket HQ</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-400">Inventory, order flow, category curation, and shopper access in one place.</p>
               </div>
             </div>
@@ -59,12 +68,12 @@ export default function AdminSidebar({ admin, isOpen, onClose }) {
           <div className="rounded-[24px] border border-white/10 bg-white/5 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Signed in</p>
             <div className="mt-3 flex items-center gap-3">
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-lime-500 text-sm font-black text-slate-950 shadow-[0_14px_28px_rgba(16,185,129,0.22)]">
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[linear-gradient(135deg,#ffc75a,#f28b47)] text-sm font-black text-[#173b86] shadow-[0_14px_28px_rgba(242,139,71,0.26)]">
                 {admin?.name?.slice(0, 2)?.toUpperCase() || "AD"}
               </div>
               <div className="min-w-0">
                 <p className="truncate font-semibold text-white">{admin?.name || "Admin"}</p>
-                <p className="truncate text-sm text-slate-400">{admin?.email || "admin@freshcart.local"}</p>
+                <p className="truncate text-sm text-slate-400">{admin?.email || "admin@primebasket.local"}</p>
               </div>
             </div>
           </div>
@@ -73,7 +82,7 @@ export default function AdminSidebar({ admin, isOpen, onClose }) {
             <p className="px-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">Workspace</p>
             <nav className="space-y-2">
               {navItems.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = isNavItemActive(pathname, item.href);
                 const Icon = item.icon;
 
                 return (
@@ -84,7 +93,7 @@ export default function AdminSidebar({ admin, isOpen, onClose }) {
                     className={clsx(
                       "group flex items-center gap-3 rounded-[20px] px-4 py-3 text-sm font-medium transition",
                       isActive
-                        ? "bg-emerald-400 text-slate-950 shadow-[0_18px_35px_rgba(74,222,128,0.25)]"
+                        ? "bg-[linear-gradient(135deg,#ffc75a,#f28b47)] text-[#173b86] shadow-[0_18px_35px_rgba(242,139,71,0.28)]"
                         : "text-slate-300 hover:bg-white/6 hover:text-white"
                     )}
                   >
