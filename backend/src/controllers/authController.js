@@ -8,8 +8,8 @@ import { serializeUser } from "../utils/serializers.js";
 const AUTH_COOKIE_NAME = "token";
 const AUTH_COOKIE_OPTIONS = {
   httpOnly: true,
-  sameSite: "lax",
-  secure: config.nodeEnv === "production",
+  sameSite: config.authCookieSameSite,
+  secure: config.authCookieSecure,
   maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 
@@ -73,8 +73,8 @@ export const loginUser = asyncHandler(async (req, res) => {
 export const logoutUser = asyncHandler(async (req, res) => {
   res.clearCookie(AUTH_COOKIE_NAME, {
     httpOnly: true,
-    sameSite: "lax",
-    secure: config.nodeEnv === "production",
+    sameSite: config.authCookieSameSite,
+    secure: config.authCookieSecure,
   });
 
   res.status(200).json({

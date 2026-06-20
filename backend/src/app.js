@@ -14,7 +14,7 @@ const app = express();
 
 const corsOptions = {
   origin(origin, callback) {
-    if (!origin || config.clientUrls.includes(origin)) {
+    if (!origin || config.isAllowedClientOrigin(origin)) {
       callback(null, true);
       return;
     }
@@ -24,12 +24,16 @@ const corsOptions = {
     callback(corsError);
   },
   credentials: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  optionsSuccessStatus: 204,
 };
 
 app.disable("x-powered-by");
 app.set("trust proxy", 1);
 
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json({ limit: config.requestBodyLimit }));
 app.use(express.urlencoded({ extended: true, limit: config.requestBodyLimit }));
 app.use(cookieParser());
