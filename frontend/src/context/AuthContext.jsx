@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { useDispatch } from "react-redux";
 
 import { API_AUTH_ERROR_EVENT } from "@/lib/axios";
+import { clearFrontendSessionCookie } from "@/lib/session-cookie";
 import { setCredentials, logout as clearAuthState } from "@/store/slices/authSlice";
 import { clearCart } from "@/store/slices/cartSlice";
 import { clearWishlist } from "@/store/slices/wishlistSlice";
@@ -36,6 +37,7 @@ export function AuthProvider({ children }) {
     try {
       return applyUser(await authService.getProfile());
     } catch {
+      void clearFrontendSessionCookie();
       applyUser(null);
       return null;
     }
@@ -52,6 +54,7 @@ export function AuthProvider({ children }) {
           applyUser(sessionUser);
         }
       } catch {
+        void clearFrontendSessionCookie();
         if (isMounted) {
           applyUser(null);
         }
@@ -67,6 +70,7 @@ export function AuthProvider({ children }) {
         return;
       }
 
+      void clearFrontendSessionCookie();
       applyUser(null);
       setIsLoading(false);
     };

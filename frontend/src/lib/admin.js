@@ -1,6 +1,5 @@
-﻿import { API_BASE_URL } from "@/lib/api-config";
-
-const AUTH_COOKIE_NAME = "token";
+import { API_BASE_URL } from "@/lib/api-config";
+import { getServerAuthHeaders } from "@/lib/server-auth";
 
 const defaultDashboard = {
   summary: {
@@ -44,27 +43,15 @@ const buildSearch = (params = {}) => {
   return queryString ? `?${queryString}` : "";
 };
 
-const getCookieHeader = async () => {
-  const { cookies } = await import("next/headers");
-  const cookieStore = await cookies();
-  const token = cookieStore.get(AUTH_COOKIE_NAME)?.value;
-
-  return token ? `${AUTH_COOKIE_NAME}=${token}` : "";
-};
-
 const requestJson = async (path, fallback) => {
   if (!API_BASE_URL) {
     return fallback;
   }
 
   try {
-    const cookieHeader = await getCookieHeader();
+    const authHeaders = await getServerAuthHeaders();
     const response = await fetch(`${API_BASE_URL}${path}`, {
-      headers: cookieHeader
-        ? {
-            Cookie: cookieHeader,
-          }
-        : {},
+      headers: authHeaders,
       cache: "no-store",
     });
 

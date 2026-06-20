@@ -1,28 +1,23 @@
-﻿import { cache } from "react";
-import { cookies } from "next/headers";
+import { cache } from "react";
 import { redirect } from "next/navigation";
 
 import { API_BASE_URL } from "@/lib/api-config";
-
-const AUTH_COOKIE_NAME = "token";
+import { getServerAuthHeaders } from "@/lib/server-auth";
 
 export const getSessionUser = cache(async () => {
   if (!API_BASE_URL) {
     return null;
   }
 
-  const cookieStore = await cookies();
-  const token = cookieStore.get(AUTH_COOKIE_NAME)?.value;
+  const authHeaders = await getServerAuthHeaders();
 
-  if (!token) {
+  if (!Object.keys(authHeaders).length) {
     return null;
   }
 
   try {
     const response = await fetch(`${API_BASE_URL}/auth/me`, {
-      headers: {
-        Cookie: `${AUTH_COOKIE_NAME}=${token}`,
-      },
+      headers: authHeaders,
       cache: "no-store",
     });
 
